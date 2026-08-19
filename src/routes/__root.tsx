@@ -131,8 +131,30 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarInset className="min-w-0">
+          <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b bg-background/85 px-4 backdrop-blur">
+            <SidebarTrigger />
+            <span className="text-sm font-medium">AI Workplace Productivity Assistant</span>
+          </header>
+          <div className="flex items-center gap-2.5 border-b bg-accent/40 px-4 py-2.5 text-xs text-muted-foreground">
+            <ShieldAlert className="size-4 shrink-0 text-primary" />
+            <p>
+              Responsible AI: all responses in this demo are simulated. Always review AI-generated
+              content for accuracy before acting on or sending it.
+            </p>
+          </div>
+          <main className="flex-1 p-4 sm:p-6 lg:p-8">
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </main>
+          <footer className="border-t px-4 py-4 text-xs text-muted-foreground sm:px-6">
+            AI-generated content may be inaccurate or incomplete — human review is required.
+          </footer>
+        </SidebarInset>
+      </SidebarProvider>
+      <Toaster />
     </QueryClientProvider>
   );
 }
