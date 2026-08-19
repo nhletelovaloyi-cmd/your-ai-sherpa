@@ -70,7 +70,7 @@ export async function summarizeNotes(notes: string): Promise<SummaryResult> {
     actionItems: (lines.length ? lines.slice(0, 4) : ["Circulate the updated project brief"]).map(
       (l, i) => ({
         text: l.charAt(0).toUpperCase() + l.slice(1),
-        owner: owners[i % owners.length],
+        owner: owners[i % owners.length]!,
       }),
     ),
     decisions: [
@@ -110,13 +110,13 @@ export async function buildSchedule(
 
   sorted.forEach((task, index) => {
     const dayIndex = view === "daily" ? 0 : index % days.length;
-    const day = result[dayIndex];
-    const slot = SLOTS[day.blocks.length % SLOTS.length];
+    const day = result[dayIndex]!;
+    const slot = SLOTS[day.blocks.length % SLOTS.length]!;
     day.blocks.push({
       time: slot,
       task: task.title,
       priority: task.priority,
-      focus: FOCUS[day.blocks.length % FOCUS.length],
+      focus: FOCUS[day.blocks.length % FOCUS.length]!,
     });
   });
 
