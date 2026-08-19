@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EmailGeneratorRouteImport } from './routes/email-generator'
+import { Route as NotesSummarizerRouteImport } from './routes/notes-summarizer'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const EmailGeneratorRoute = EmailGeneratorRouteImport.update({
   path: '/email-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotesSummarizerRoute = NotesSummarizerRouteImport.update({
+  id: '/notes-summarizer',
+  path: '/notes-summarizer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/email-generator': typeof EmailGeneratorRoute
+  '/notes-summarizer': typeof NotesSummarizerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/email-generator': typeof EmailGeneratorRoute
+  '/notes-summarizer': typeof NotesSummarizerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/email-generator': typeof EmailGeneratorRoute
+  '/notes-summarizer': typeof NotesSummarizerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/email-generator'
+  fullPaths: '/' | '/email-generator' | '/notes-summarizer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/email-generator'
-  id: '__root__' | '/' | '/email-generator'
+  to: '/' | '/email-generator' | '/notes-summarizer'
+  id: '__root__' | '/' | '/email-generator' | '/notes-summarizer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EmailGeneratorRoute: typeof EmailGeneratorRoute
+  NotesSummarizerRoute: typeof NotesSummarizerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmailGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notes-summarizer': {
+      id: '/notes-summarizer'
+      path: '/notes-summarizer'
+      fullPath: '/notes-summarizer'
+      preLoaderRoute: typeof NotesSummarizerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EmailGeneratorRoute: EmailGeneratorRoute,
+  NotesSummarizerRoute: NotesSummarizerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
