@@ -57,7 +57,7 @@ function Overview() {
   return (
     <div className="space-y-8">
       <section className="gradient-hero animate-rise relative overflow-hidden rounded-2xl p-6 text-primary-foreground sm:p-10">
-        <Badge className="border-0 bg-primary-foreground/15 text-primary-foreground">
+        <Badge className="gap-1.5 border-0 bg-primary-foreground/15 text-primary-foreground">
           <Sparkles className="size-3.5" /> Demo workspace
         </Badge>
         <h1 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">
