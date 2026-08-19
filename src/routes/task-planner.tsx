@@ -35,7 +35,7 @@ export const Route = createFileRoute("/task-planner")({
       },
     ],
   }),
-  component: TaskPlanner;
+  component: TaskPlanner,
 });
 
 const priorityStyles: Record<Priority, string> = {
