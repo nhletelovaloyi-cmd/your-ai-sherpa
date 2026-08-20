@@ -1,66 +1,139 @@
 # AI Workplace Companion
 
-Build a modern, responsive web application called "AI Workplace Productivity Assistant" designed to help professionals automate tasks using AI. 
+A modern, responsive web application that helps professionals automate everyday workplace tasks with AI. Built as a clean, professional SaaS dashboard with sidebar navigation, the app provides three core productivity tools powered by simulated AI responses.
 
-The application must include exactly 3 core features accessible via a clean, professional SaaS dashboard layout with sidebar navigation:
+![Built with TanStack Start](https://img.shields.io/badge/Built%20with-TanStack%20Start-blue?style=flat-square)
+![React 19](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
+![Tailwind CSS v4](https://img.shields.io/badge/Tailwind%20CSS-v4-38B2AC?style=flat-square&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript)
 
-1. Smart Email Generator:
+## Overview
 
-   - Input field for context, topic, or raw bullet points.
+The **AI Workplace Companion** is designed to streamline common knowledge-work tasks through an intuitive, AI-assisted interface. It combines a professional SaaS aesthetic with a responsive layout, making it easy to draft communications, distill meeting notes, and plan work across a week or day.
 
-   - Tone selector dropdown (Formal, Friendly, Persuasive).
+This project uses a simulated AI engine for all responses, so every feature works instantly without needing external API keys.
 
-   - Output section displaying the generated professional email with a "Copy to Clipboard" button.
+## Main Features
 
-2. Meeting Notes Summarizer:
+### 1. Smart Email Generator
+- Enter the context or key points you want to communicate.
+- Choose a tone: **Formal**, **Friendly**, or **Persuasive**.
+- Instantly generate a complete subject line and body.
+- One-click copy to clipboard.
 
-   - Large text area input to paste long meeting transcriptions or notes.
+### 2. Meeting Notes Summarizer
+- Paste raw meeting notes into a text area.
+- Receive a structured output with:
+  - A concise summary
+  - Action items with checkboxes
+  - Key decisions
+  - Upcoming deadlines
+- Mark action items as completed as you work through them.
 
-   - Clear output layout extracting: a concise Summary, Action Items (with checkboxes), Decisions Made, and Deadlines.
+### 3. AI Task Planner & Scheduler
+- Add tasks with priorities (**High**, **Medium**, **Low**) and estimated durations.
+- Toggle between **Daily** and **Weekly** schedule views.
+- Get a visually organized time-blocked schedule based on priority and task length.
 
-3. AI Task Planner & Scheduler:
+### Dashboard
+- Central overview with usage statistics and quick links to each tool.
+- "How it works" guide for first-time users.
 
-   - Input form to list tasks and set basic priorities.
+### Responsible AI
+- A visible responsible AI disclaimer is shown in the header and footer of every page, reminding users to review and verify AI-generated content before using it in professional contexts.
 
-   - Interactive visual display generating organized daily or weekly schedules.
+## Tech Stack
 
-   - Feature to help users prioritize tasks effectively (e.g., High, Medium, Low categories).
+- **Framework:** [TanStack Start](https://tanstack.com/start/) — full-stack React framework with file-based routing
+- **UI Library:** React 19
+- **Styling:** Tailwind CSS v4 with OKLCH color tokens and a custom design system
+- **Components:** shadcn/ui primitives (Radix UI based)
+- **Language:** TypeScript 5.8
+- **Build Tool:** Vite 8
+- **State & Data:** TanStack Query, React Hook Form, Zod
+- **Icons:** Lucide React
 
-Expected Project Structure & UI Requirements:
+## Project Structure
 
-- Modern Dashboard UI: A clean, sleek layout with a professional SaaS aesthetic.
-
-- Sidebar Navigation: Collapsible sidebar to seamlessly switch between the 3 features and a main overview dashboard.
-
-- Responsive Design: Fully optimized for both desktop viewports and mobile screens.
-
-- Input & Output Sections: Distinct visual separation between user inputs and AI-generated outputs.
-
-- Simulated AI Responses: High-fidelity mock interactive responses for all tools to demonstrate functional workflows.
-
-- Professional UI/UX: Use clean typography, consistent spacing, and subtle modern animations/transitions.
-
-- Responsible AI Disclaimer: A visible, professional disclaimer banner or footer stating that AI-generated content should be reviewed for accuracy.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://your-ai-sherpa.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/dbdd1789-819a-4ce5-9fca-f53a5998ff09).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
 ```
+├── src/
+│   ├── components/         # Reusable UI components (Sidebar, PageHeader, etc.)
+│   ├── lib/                # Utility logic and simulated AI engine
+│   │   └── mock-ai.ts      # AI simulation for email, notes, and scheduling
+│   ├── routes/             # TanStack Start file-based routes
+│   │   ├── __root.tsx      # Root layout with sidebar and disclaimers
+│   │   ├── index.tsx       # Dashboard overview
+│   │   ├── email-generator.tsx
+│   │   ├── notes-summarizer.tsx
+│   │   └── task-planner.tsx
+│   ├── styles.css          # Global design tokens and Tailwind theme
+│   └── router.tsx          # Router configuration
+├── public/                 # Static assets
+├── package.json
+├── README.md
+└── vite.config.ts
+```
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- A package manager such as `npm`, `yarn`, `pnpm`, or `bun`
+
+### Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone <this-repository-url>
+   cd <repository-name>
+   ```
+
+2. Install dependencies:
+
+   ```sh
+   npm install
+   ```
+
+   Or with `bun`:
+
+   ```sh
+   bun install
+   ```
+
+3. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+   The application will be available at `http://localhost:8080` by default.
+
+### Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Build the production bundle |
+| `npm run build:dev` | Build in development mode |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint across the project |
+| `npm run format` | Format code with Prettier |
+
+## Usage
+
+1. Open the app in your browser.
+2. Use the left sidebar to navigate between **Email Generator**, **Notes Summarizer**, and **Task Planner**.
+3. Fill in the inputs and click the generate button to see simulated AI output.
+4. Copy, check off, or adjust results as needed.
+
+## Notes
+
+- All AI responses in this project are simulated by `src/lib/mock-ai.ts` for demonstration purposes.
+- No external AI API keys are required to run the app.
+- Before using generated content in real communications, documents, or schedules, always review and edit it for accuracy and tone.
+
+## License
+
+This project was generated with [Lovable](https://lovable.dev) and is provided as a starting point for your own application. Modify, extend, and deploy it as you see fit.
